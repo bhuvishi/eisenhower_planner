@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eisen Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Eisen Planner</h1>
+        <button id="theme-toggle">Toggle Theme</button>
+    </header>
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'daily-planner')">Daily</button>
+        <button class="tab-link" onclick="openTab(event, 'weekly-planner')">Weekly</button>
+        <button class="tab-link" onclick="openTab(event, 'monthly-planner')">Monthly</button>
+    </div>
+    <div id="daily-planner" class="tab-content active">
+        <div class="add-task">
+            <input type="text" id="daily-task-input" placeholder="Enter a new task...">
+            <button onclick="addTask('daily')">Add Task</button>
+        </div>
+        <div class="calendar-header">
+            <h2 id="daily-date"></h2>
+        </div>
+        <div id="quote-container">
+            <p id="quote-text"></p>
+        </div>
+        <div class="eisenhower-matrix">
+            <div class="quadrant" id="urgent-important" ondragover="allowDrop(event)" ondrop="drop(event)"><h2>Urgent & Important</h2><div class="task-list"></div></div>
+            <div class="quadrant" id="not-urgent-important" ondragover="allowDrop(event)" ondrop="drop(event)"><h2>Not Urgent but Important</h2><div class="task-list"></div></div>
+            <div class="quadrant" id="urgent-not-important" ondragover="allowDrop(event)" ondrop="drop(event)"><h2>Urgent but Not Important</h2><div class="task-list"></div></div>
+            <div class="quadrant" id="neither-urgent-nor-important" ondragover="allowDrop(event)" ondrop="drop(event)"><h2>Neither Urgent nor Important</h2><div class="task-list"></div></div>
+        </div>
+    </div>
+    <div id="weekly-planner" class="tab-content">
+        <div class="add-task">
+            <input type="text" id="weekly-task-input" placeholder="Enter a new task...">
+            <input type="date" id="weekly-task-date">
+            <button onclick="addTask('weekly')">Add Task</button>
+        </div>
+        <div class="calendar-header">
+            <h2 id="weekly-date"></h2>
+        </div>
+        <div id="weekly-calendar-grid" class="calendar-grid" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    </div>
+    <div id="monthly-planner" class="tab-content">
+        <div class="add-task">
+            <input type="text" id="monthly-task-input" placeholder="Enter a new task...">
+            <input type="date" id="monthly-task-date">
+            <button onclick="addTask('monthly')">Add Task</button>
+        </div>
+        <div class="calendar-header">
+            <h2 id="monthly-date"></h2>
+        </div>
+        <div id="monthly-calendar-grid" class="calendar-grid" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    </div>
+    <div id="undo-notification" class="hidden">
+        <span>Task deleted.</span>
+        <button id="undo-btn">Undo</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
